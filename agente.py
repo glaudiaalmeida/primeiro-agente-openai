@@ -7,17 +7,15 @@ from estudante import DadosDeEstudante, PerfilAcademico
 from langchain_openai import ChatOpenAI
 from universidade import DadosDeUniversidade
 
-modelo = "gpt-4o-mini"
-
 class AgenteOpenAIFunctions:
     def __init__(self):
-        llm = ChatOpenAI(model=modelo,
+        llm = ChatOpenAI(model="gpt-4o-mini",
                          api_key=os.getenv("OPENAI_API_KEY"))
 
         dados_de_estudante = DadosDeEstudante()
         perfil_academico = PerfilAcademico()
         dados_da_universidade = DadosDeUniversidade()
-        #todas_universidades = TodasUniversidades()
+    
         self.tools = [
             Tool(name = dados_de_estudante.name,
                 func = dados_de_estudante.run,
@@ -29,11 +27,6 @@ class AgenteOpenAIFunctions:
             Tool(name = dados_da_universidade.name,
                 func = dados_da_universidade.run,
                 description = dados_da_universidade.description),
-           # Tool(
-           #    name=todas_universidade.name,
-            #    func=todas_universidade.run,
-            #    description=todas_universidade.description,
-           # ),
 
         ]
 #openai functions   

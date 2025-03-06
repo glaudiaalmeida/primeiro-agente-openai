@@ -13,9 +13,9 @@ pergunta = "Compare o perfil academico da Ana com o da Bianca!"
 pergunta = "Tenho sentido Ana desanimada com cursos de matematica. Seria uma boa parear ela com a Bianca?"
 pergunta = "Quais os dados da USP?"
 
-agente = AgenteOpenAIFunctions()
-executor = AgentExecutor(agent=agente.agente,
-                       tools=agente.tools,
+agent = AgenteOpenAIFunctions()
+executor = AgentExecutor(agente=agent.agente,
+                       tools=agent.tools,
                        verbose=True)
 resposta = executor.invoke({"input": pergunta})
 print(resposta)
